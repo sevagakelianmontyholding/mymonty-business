@@ -1,33 +1,32 @@
-import React, { useMemo, useState } from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  Pressable,
-  ActivityIndicator,
-} from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { StatusBar } from "expo-status-bar";
+import { apiFetch } from "@/utils/apiFetch";
+import { useQuery } from "@tanstack/react-query";
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
-import { useQuery } from "@tanstack/react-query";
-import { apiFetch } from "@/utils/apiFetch";
+import { StatusBar } from "expo-status-bar";
 import {
-  Plus,
-  ArrowUpRight,
   ArrowDownLeft,
+  ArrowUpRight,
+  Banknote,
+  ChevronDown,
   ChevronRight,
-  QrCode,
-  HelpCircle,
   Eye,
   EyeOff,
-  ChevronDown,
-  Banknote,
   Gift,
+  HelpCircle,
+  Plus,
+  QrCode,
 } from "lucide-react-native";
+import { useMemo, useState } from "react";
+import {
+  ActivityIndicator,
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-const BRAND_LOGO_URL =
-  "https://ucarecdn.com/d2604490-7aaa-4080-927f-4c459b64a64d/-/format/auto/";
+const BRAND_LOGO = require("@/assets/images/mymonty-business-logo.png");
 
 function currencySymbol(currency) {
   if (currency === "EUR") return "€";
@@ -350,7 +349,7 @@ export default function Home() {
         >
           <View style={{ flex: 1, paddingRight: 6 }}>
             <Image
-              source={{ uri: BRAND_LOGO_URL }}
+              source={ BRAND_LOGO }
               style={{ width: 240, height: 34, flexShrink: 1 }}
               contentFit="contain"
             />
