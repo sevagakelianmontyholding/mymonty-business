@@ -1,17 +1,18 @@
+import { apiFetch } from "@/utils/apiFetch";
+import { GET_ACTIVITIES_API } from "@/utils/config";
+import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { ChevronRight, Clock, X } from "lucide-react-native";
+import { useMemo } from "react";
 import {
-  View,
-  Text,
+  ActivityIndicator,
   Pressable,
   ScrollView,
-  ActivityIndicator,
+  Text,
+  View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { StatusBar } from "expo-status-bar";
-import { useRouter } from "expo-router";
-import { useQuery } from "@tanstack/react-query";
-import { X, Clock, ChevronRight } from "lucide-react-native";
-import { useMemo } from "react";
-import { apiFetch } from "@/utils/apiFetch";
 
 export default function Activity() {
   const insets = useSafeAreaInsets();
@@ -27,7 +28,7 @@ export default function Activity() {
   const { data: transactionsData, isLoading } = useQuery({
     queryKey: ["v1-transactions", 100],
     queryFn: async () => {
-      return apiFetch("/api/v1/transactions?limit=100");
+      return apiFetch(GET_ACTIVITIES_API);
     },
   });
 
@@ -73,6 +74,11 @@ export default function Activity() {
       };
     });
   }, [transactionsData]);
+
+  //For Testing Only
+  // const allActivity = [
+  //   { title: "Zabri", subtitle: "Ayre b haze", amount: 2432 },
+  // ]
 
   return (
     <View

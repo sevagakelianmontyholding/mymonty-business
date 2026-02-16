@@ -1,6 +1,6 @@
 import { useRequireAuth } from "@/utils/auth/useAuth";
 import { Tabs } from "expo-router";
-import { ArrowRightLeft, CreditCard, Grid3X3, Home } from "lucide-react-native";
+import { ArrowRightLeft, BanknoteArrowDown, CircleEllipsis, CreditCard, Home } from "lucide-react-native";
 
 export default function TabLayout() {
   useRequireAuth({ mode: "signin" });
@@ -54,11 +54,20 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="expenses"
+        options={{
+          title: "Expenses",
+          tabBarIcon: ({ color, size }) => (
+            <BanknoteArrowDown color={color} size={size ?? 24} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="more"
         options={{
           title: "More",
           tabBarIcon: ({ color, size }) => (
-            <Grid3X3 color={color} size={size ?? 24} />
+            <CircleEllipsis color={color} size={size ?? 24} />
           ),
         }}
       />

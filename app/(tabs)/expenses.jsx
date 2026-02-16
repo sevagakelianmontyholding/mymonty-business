@@ -1,19 +1,19 @@
+import { apiFetch } from "@/utils/apiFetch";
+import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { ArrowLeft, Calendar, ChevronDown, Info } from "lucide-react-native";
 import React, { useMemo, useState } from "react";
 import {
-  View,
-  Text,
-  ScrollView,
-  Pressable,
-  Alert,
   ActivityIndicator,
+  Alert,
+  Pressable,
+  ScrollView,
+  Text,
+  View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { StatusBar } from "expo-status-bar";
-import { useRouter } from "expo-router";
 import Svg, { Circle, Text as SvgText } from "react-native-svg";
-import { ArrowLeft, Info, ChevronDown, Calendar } from "lucide-react-native";
-import { useQuery } from "@tanstack/react-query";
-import { apiFetch } from "@/utils/apiFetch";
 
 function Segmented({ items, value, onChange }) {
   const border = "rgba(11,15,20,0.08)";
