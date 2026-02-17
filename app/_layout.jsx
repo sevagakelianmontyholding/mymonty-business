@@ -37,7 +37,7 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <Stack screenOptions={{ headerShown: false }} initialRouteName="index">
+        <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: "transparent" }}}  initialRouteName="index">
           <Stack.Screen name="index" />
         </Stack>
       </GestureHandlerRootView>
